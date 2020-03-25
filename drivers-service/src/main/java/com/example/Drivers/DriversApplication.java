@@ -22,8 +22,8 @@ public class DriversApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Driver d1 = new Driver(UUID.fromString("45688cd6-7a27-4a7b-89c5-a9b604eefe2f"), "Wesley Ramos");
-		Driver d2 = new Driver(UUID.fromString("9a118e4d-821a-44c7-accc-fa99ac4be01a"), "Luiz Mariola");
+		Driver d1 = new Driver(1, "Wesley Ramos");
+		Driver d2 = new Driver(2, "Luiz Mariola");
 
 		driverRepository.saveAll(Arrays.asList(d1, d2));
 	}

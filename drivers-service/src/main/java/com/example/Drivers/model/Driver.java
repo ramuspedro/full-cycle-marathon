@@ -10,7 +10,7 @@ public class Driver implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, unique = true, nullable = false)
-    private UUID id;
+    private Integer id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -18,16 +18,16 @@ public class Driver implements Serializable {
     public Driver() {
     }
 
-    public Driver(UUID id, String name) {
+    public Driver(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -3,17 +3,19 @@ package com.simulator.simulatorservice.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = Location.class)
-public class Location {
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = Destination.class)
+public class Destination {
     private String lat;
     private String lng;
+    private Integer order;
 
-    public Location() {
+    public Destination() {
     }
 
-    public Location(String lat, String lng) {
+    public Destination(String lat, String lng, Integer order) {
         this.lat = lat;
         this.lng = lng;
+        this.order = order;
     }
 
     public String getLat() {
@@ -30,5 +32,13 @@ public class Location {
 
     public void setLng(String lng) {
         this.lng = lng;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 }

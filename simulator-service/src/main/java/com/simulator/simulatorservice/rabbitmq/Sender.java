@@ -1,4 +1,4 @@
-package com.simulator.simulatorservice.RabbitMQ;
+package com.simulator.simulatorservice.rabbitmq;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

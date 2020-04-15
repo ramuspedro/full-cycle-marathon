@@ -1,20 +1,21 @@
 package com.simulator.simulatorservice;
 
 
-import com.simulator.simulatorservice.RabbitMQ.Sender;
+import com.simulator.simulatorservice.rabbitmq.Sender;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SimulatorServiceApplication implements CommandLineRunner {
+public class SimulatorServiceApplication {
 
-	@Value("${queue.sender}")
-	private String senderQueue;
+	@Value("${queue.position}")
+	private String positionQueue;
 
 	@Autowired
 	private Sender sender;
@@ -25,14 +26,19 @@ public class SimulatorServiceApplication implements CommandLineRunner {
 
 	@Bean
 	public Queue queue() {
-		return new Queue(senderQueue, true);
+		return new Queue(positionQueue, true);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("Sending message...");
-		sender.send("Esse aqui é o sender");
+	@Bean
+	public MessageConverter jsonMessageConverter(){
+		return new Jackson2JsonMessageConverter();
 	}
+
+//	@Override
+//	public void run(String... args) throws Exception {
+//		System.out.println("Sending message...");
+//		sender.send("Esse aqui é o sender");
+//	}
 
 //	@Override
 //	public void run(String... args) throws Exception {

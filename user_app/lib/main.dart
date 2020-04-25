@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
               print("Response body: ${response.contentLength}");
               print(response.headers);
               print(response.request);
+              print(response.body);
             });
           },
           child: Text(

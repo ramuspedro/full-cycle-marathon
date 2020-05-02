@@ -1,16 +1,17 @@
 package com.example.orderservice.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.orderservice.dto.OrderDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:33493")
+@CrossOrigin(origins = "http://localhost:34213")
 @RequestMapping(value = "/order")
 public class OrderController {
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String index() {
-        return "Get order";
+    public ResponseEntity<Void> index(@RequestBody OrderDTO data) {
+        System.out.println(data.toString());
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

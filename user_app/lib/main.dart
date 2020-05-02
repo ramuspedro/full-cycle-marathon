@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -31,13 +33,17 @@ class MyApp extends StatelessWidget {
           padding: EdgeInsets.all(8.0),
           splashColor: Colors.blueAccent,
           onPressed: () {
+            var data = {'order': 1, 'destination': 1};
             print("OKKKK");
-            http.post(
+            http
+                .post(
               'http://localhost:8083/order',
               headers: <String, String>{
                 'Content-Type': 'application/json; charset=UTF-8',
-              }
-            ).then((http.Response response) {
+              },
+              body: utf8.encode(json.encode(data)),
+            )
+                .then((http.Response response) {
               print("Response status: ${response.statusCode}");
               print("Response body: ${response.contentLength}");
               print(response.headers);
